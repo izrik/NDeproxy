@@ -49,8 +49,7 @@ namespace NDeproxy
 //            }
             else
             {
-                s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                s.Connect(host, port.Value);
+                s = SocketHelper.Client(host, port.Value);
             }
 
             Stream outStream = new NetworkStream(s);
