@@ -123,12 +123,12 @@ namespace NDeproxy
                                  string threadName)
             {
 
-                thread.Name = threadName;
                 this.parent = parent;
                 this.socket = socket;
                 this.connectionName = connectionName;
 
                 thread = new Thread(this.run);
+                thread.Name = threadName;
                 thread.Start();
             }
 
