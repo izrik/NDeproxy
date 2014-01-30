@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5C921277-A0AD-4E68-95B7-BF8C6231BDA2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>NDeproxy.Tests</RootNamespace>
+    <AssemblyName>NDeproxy.Tests</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="BareClientConnectorTest.cs" />
+    <Compile Include="BinaryBodiesTest.cs" />
+    <Compile Include="BodiesTest.cs" />
+    <Compile Include="ChunkedBodiesTest.cs" />
+    <Compile Include="ConnectionReuseTest.cs" />
+    <Compile Include="CustomHandlersTest.cs" />
+    <Compile Include="DefaultClientConnectorTest.cs" />
+    <Compile Include="DefaultHandlerTest.cs" />
+    <Compile Include="DefaultHandlerTest2.cs" />
+    <Compile Include="DefaultRequestHeadersTest.cs" />
+    <Compile Include="DefaultResponseHeadersTest.cs" />
+    <Compile Include="DelayHandlerTest.cs" />
+    <Compile Include="DeproxyDefaultHandlerTest.cs" />
+    <Compile Include="DeproxyShutdownTest.cs" />
+    <Compile Include="DummyObject.cs" />
+    <Compile Include="EchoHandlerTest.cs" />
+    <Compile Include="EndpointDefaultHandlerTest.cs" />
+    <Compile Include="EndpointPortVsConnectorTest.cs" />
+    <Compile Include="EndpointShutdownTest.cs" />
+    <Compile Include="HeaderCollectionConstructorsTest.cs" />
+    <Compile Include="HeaderCollectionTest.cs" />
+    <Compile Include="HostHeaderTest.cs" />
+    <Compile Include="LocalSocketPairTest.cs" />
+    <Compile Include="makeRequestParamsTest.cs" />
+    <Compile Include="OrphanedHandlingsTest.cs" />
+    <Compile Include="PerEndpointHandlersTest.cs" />
+    <Compile Include="PortFinderTest.cs" />
+    <Compile Include="QueryParametersTest.cs" />
+    <Compile Include="RouteHandlerTest.cs" />
+    <Compile Include="SendingHeadersTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NDeproxy.csproj">
+      <Project>{811FC8FD-7DAD-47CC-8FC9-87CD4A38F823}</Project>
+      <Name>NDeproxy</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>

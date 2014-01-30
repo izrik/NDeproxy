@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{811FC8FD-7DAD-47CC-8FC9-87CD4A38F823}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>NDeproxy</RootNamespace>
+    <AssemblyName>NDeproxy</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BareClientConnector.cs" />
+    <Compile Include="BodyReader.cs" />
+    <Compile Include="BodyWriter.cs" />
+    <Compile Include="ClientConnector.cs" />
+    <Compile Include="DefaultClientConnector.cs" />
+    <Compile Include="Deproxy.cs" />
+    <Compile Include="Endpoint.cs" />
+    <Compile Include="Handler.cs" />
+    <Compile Include="HandlerContext.cs" />
+    <Compile Include="Handlers.cs" />
+    <Compile Include="Handling.cs" />
+    <Compile Include="Header.cs" />
+    <Compile Include="HeaderCollection.cs" />
+    <Compile Include="HeaderReader.cs" />
+    <Compile Include="HeaderWriter.cs" />
+    <Compile Include="HostHeader.cs" />
+    <Compile Include="HttpResponseMessage.cs" />
+    <Compile Include="LineReader.cs" />
+    <Compile Include="LocalSocketPair.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="MessageChain.cs" />
+    <Compile Include="PortFinder.cs" />
+    <Compile Include="Request.cs" />
+    <Compile Include="RequestParams.cs" />
+    <Compile Include="Response.cs" />
+    <Compile Include="ResponseWithContext.cs" />
+    <Compile Include="ServerConnector.cs" />
+    <Compile Include="SocketServerConnector.cs" />
+    <Compile Include="StringHelper.cs" />
+    <Compile Include="UnbufferedStreamReader.cs" />
+    <Compile Include="SocketHelper.cs" />
+    <Compile Include="StaticTcpServer.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
