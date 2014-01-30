@@ -43,8 +43,8 @@ namespace NDeproxy
             }
 
             if (port != null &&
-                port.Value >= 0 &&
-                port.Value <= 65535)
+                (port.Value < 0 ||
+                port.Value > 65535))
             {
                 throw new ArgumentException("The value provided contains an invalid port");
             }
