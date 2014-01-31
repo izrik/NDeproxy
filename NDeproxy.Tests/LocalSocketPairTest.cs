@@ -9,7 +9,7 @@ namespace NDeproxy.Tests
     class LocalSocketPairTest
     {
         [Test]
-        void testLocalSocketPairCreation()
+        public void testLocalSocketPairCreation()
         {
 
             var pair = LocalSocketPair.createLocalSocketPair();
@@ -45,7 +45,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testLocalSocketPairCreationWithPort()
+        public void testLocalSocketPairCreationWithPort()
         {
 
             var pair = LocalSocketPair.createLocalSocketPair(12345);

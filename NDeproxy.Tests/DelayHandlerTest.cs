@@ -8,7 +8,7 @@ namespace NDeproxy.Tests
     class DelayHandlerTest
     {
         [Test]
-        void testDelayHandler()
+        public void testDelayHandler()
         {
             var handler = Handlers.Delay(1000);
 
@@ -25,7 +25,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testDelayHandlerWithNextHandler()
+        public void testDelayHandlerWithNextHandler()
         {
 
             var handler = Handlers.Delay(1000, x => new Response(606, "Something"));
