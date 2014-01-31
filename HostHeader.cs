@@ -18,35 +18,37 @@ namespace NDeproxy
         public readonly string host;
         public readonly int? port;
         //    static readonly string alpha                = /(?x) ( [a-zA-Z] )/
-        static readonly Regex alpha = new Regex(@"([a-zA-Z])", RegexOptions.Compiled | RegexOptions.IgnorePatternWhitespace);
+        static readonly string alpha = @"([a-zA-Z])";
         //    static readonly string alphanum             = /(?x) ( [a-zA-Z\d] )/
-        static readonly Regex alphanum = new Regex(@"( [a-zA-Z\d] )", RegexOptions.Compiled | RegexOptions.IgnorePatternWhitespace);
+        static readonly string alphanum = @"( [a-zA-Z\d] )";
         //    static readonly string domainlabelPattern   = /(?x) ( ${alphanum} | ( ${alphanum} ( ${alphanum} | \- )* ${alphanum} ) )/
-        static readonly Regex domainlabelPattern = new Regex(string.Format(@"( ({0}) | ( ({0}) ( ({0}) | - )* ({0}) ) )", alphanum), RegexOptions.Compiled | RegexOptions.IgnorePatternWhitespace);
+        static readonly string domainlabelPattern = string.Format(@"( ({0}) | ( ({0}) ( ({0}) | - )* ({0}) ) )", alphanum);
         //    static readonly string toplabelPattern      = /(?x) ( ${alpha}  | ( ${alpha} ( ${alphanum} | \- )* ${alphanum} ) )/
-        static readonly Regex toplabelPattern = new Regex(string.Format(@"( ({0})  | ( ({0}) ( ({1}) | - )* ({1}) ) )", alpha, alphanum), RegexOptions.Compiled | RegexOptions.IgnorePatternWhitespace);
+        static readonly string toplabelPattern = string.Format(@"( ({0})  | ( ({0}) ( ({1}) | - )* ({1}) ) )", alpha, alphanum);
         //    static readonly string hostnamePattern      = /(?x) ( ${domainlabelPattern} \. )* ( ${toplabelPattern} ) (\.?) /
-        static readonly Regex hostnamePattern = new Regex(string.Format(@"( ({0}) \. )* ( ({1}) ) (\.?)", domainlabelPattern, toplabelPattern), RegexOptions.Compiled | RegexOptions.IgnorePatternWhitespace);
+        static readonly string hostnamePattern = string.Format(@"( ({0}) \. )* ( ({1}) ) (\.?)", domainlabelPattern, toplabelPattern);
         //    static readonly string IPv4addressPattern   = /(?x) ( [\d]+ \. [\d]+ \. [\d]+ \. [\d]+ ) /
-        static readonly Regex IPv4addressPattern = new Regex(@"( [\d]+ \. [\d]+ \. [\d]+ \. [\d]+ )", RegexOptions.Compiled | RegexOptions.IgnorePatternWhitespace);
+        static readonly string IPv4addressPattern = @"( [\d]+ \. [\d]+ \. [\d]+ \. [\d]+ )";
         //    static readonly string hostPattern          = /(?x) ( ${hostnamePattern} | ${IPv4addressPattern} )/
-        static readonly Regex hostPattern = new Regex(string.Format(@"( ({0}) | ({1}) )", hostnamePattern, IPv4addressPattern), RegexOptions.Compiled | RegexOptions.IgnorePatternWhitespace);
+        static readonly string hostPattern = string.Format(@"( ({0}) | ({1}) )", hostnamePattern, IPv4addressPattern);
         //    static readonly string portPattern          = /(?x) ( [\d]* )/
-        static readonly Regex portPattern = new Regex(@"( [\d]* )", RegexOptions.Compiled | RegexOptions.IgnorePatternWhitespace);
+        static readonly string portPattern = @"( [\d]* )";
+
+
 
         public static string CreateHostHeaderValue(string host, int? port = null, bool? https = null)
         {
 
-            if (!(hostPattern.IsMatch(host)))
+            if (!Regex.IsMatch(host, string.Format("^{0}$", hostPattern), RegexOptions.IgnorePatternWhitespace))
             {
-                throw new ArgumentException("The value provided does not contain a valid hostname");
+                throw new ArgumentException("The value provided does not contain a valid hostname", "host");
             }
 
             if (port != null &&
                 (port.Value < 0 ||
                 port.Value > 65535))
             {
-                throw new ArgumentException("The value provided contains an invalid port");
+                throw new ArgumentException("The value provided contains an invalid port", "port");
             }
 
             return CreateHostHeaderValueNoCheck(host, port, https);
@@ -111,6 +113,11 @@ namespace NDeproxy
 
             if (!string.IsNullOrEmpty(portStr))
             {
+                if (!Regex.IsMatch(portStr, string.Format("^{0}$", portPattern), RegexOptions.IgnorePatternWhitespace))
+                {
+                    throw new ArgumentException("The value provided does not contain a valid port", "value");
+                }
+
                 int port = int.Parse(portStr);
                 return new HostHeader(host, port);
             }

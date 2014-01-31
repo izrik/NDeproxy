@@ -65,6 +65,7 @@ namespace NDeproxy.Tests
             Assert.AreEqual(expectedValue, HostHeader.CreateHostHeaderValue(host, port, https));
 
         }
+
         //    @Unroll("when we call CreateHostHeaderValue with #host and #port, we should get #expectedValue (e.g., https is not specified)")
         [Test]
         [TestCase("localhost", 80, "localhost:80")]
@@ -85,6 +86,7 @@ namespace NDeproxy.Tests
             expect:
             Assert.AreEqual(expectedValue, HostHeader.CreateHostHeaderValue(host, port));
         }
+
         //    @Unroll("when we call CreateHostHeaderValue with #host, we should get #expectedValue (e.g., neither port nor https is specified)")
         [Test]
         [TestCase("localhost", "localhost")] 
@@ -96,6 +98,7 @@ namespace NDeproxy.Tests
             expect:
             Assert.AreEqual(expectedValue, HostHeader.CreateHostHeaderValue(host));
         }
+
         //    @Unroll("when we create a HostHeader with #host and #port, we should get #expectedValue")
         [Test]
         [TestCase("localhost", 80, "localhost:80")]
@@ -163,6 +166,7 @@ namespace NDeproxy.Tests
             Assert.AreEqual(host, hh.host);
             Assert.AreEqual(port, hh.port);
         }
+
         //    @Unroll("Calling fromString with #value should throw an exception")
         [Test]
         [TestCase("12.34.56.78.")]
