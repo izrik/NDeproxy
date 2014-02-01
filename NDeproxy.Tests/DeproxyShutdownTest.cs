@@ -10,7 +10,7 @@ namespace NDeproxy.Tests
         Deproxy deproxy;
 
         [Test]
-        void testShutdown()
+        public void testShutdown()
         {
 
             /*
@@ -43,7 +43,7 @@ namespace NDeproxy.Tests
         }
 
         [TearDown]
-        void tearDown()
+        public void tearDown()
         {
 
             if (deproxy != null)

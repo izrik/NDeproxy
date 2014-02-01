@@ -26,7 +26,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testChunkedRequestBodyInBareClientConnector()
+        public void testChunkedRequestBodyInBareClientConnector()
         {
 
 
@@ -84,7 +84,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testChunkedRequestBodyInDefaultClientConnector()
+        public void testChunkedRequestBodyInDefaultClientConnector()
         {
 
 
@@ -151,7 +151,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testChunkedRequestBodyInDeproxyEndpoint()
+        public void testChunkedRequestBodyInDeproxyEndpoint()
         {
 
             // setup - create canned request; setup deproxy and endpoint
@@ -210,7 +210,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testChunkedResponseBodyInBareClientConnector()
+        public void testChunkedResponseBodyInBareClientConnector()
         {
 
 
@@ -267,7 +267,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testChunkedResponseBodyInDefaultClientConnector()
+        public void testChunkedResponseBodyInDefaultClientConnector()
         {
 
 
@@ -323,7 +323,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testChunkedResponseBodyInDeproxyEndpoint()
+        public void testChunkedResponseBodyInDeproxyEndpoint()
         {
 
             // create canned request & response
@@ -437,7 +437,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testChunkedBodyInBodyWriter1()
+        public void testChunkedBodyInBodyWriter1()
         {
 
             string length = body.Length.ToString("X");
@@ -461,7 +461,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testChunkedBodyInBodyWriter2()
+        public void testChunkedBodyInBodyWriter2()
         {
 
             string length = body.Length.ToString("X");
@@ -485,7 +485,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testChunkedBodyInBodyReader1()
+        public void testChunkedBodyInBodyReader1()
         {
 
             string length = body.Length.ToString("X");
@@ -507,7 +507,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testChunkedBodyInBodyReader2()
+        public void testChunkedBodyInBodyReader2()
         {
 
             string length = body.Length.ToString("X");
@@ -531,7 +531,7 @@ namespace NDeproxy.Tests
         }
 
         [TearDown]
-        void tearDown()
+        public void tearDown()
         {
             if (this.deproxy != null)
             {

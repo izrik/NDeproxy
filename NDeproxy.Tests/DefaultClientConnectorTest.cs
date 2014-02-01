@@ -12,7 +12,7 @@ namespace NDeproxy.Tests
         Socket server;
 
         [Test]
-        void testConstructorWithSocketParameter()
+        public void testConstructorWithSocketParameter()
         {
 
             given: //"a client socket and a server socket"
@@ -83,7 +83,7 @@ namespace NDeproxy.Tests
         [TestCase("12.34.56.78", 12345, true, "12.34.56.78:12345")]
         [TestCase("12.34.56.78", 12345, false, "12.34.56.78:12345")]
         //        @Unroll("when we call sendRequest with https=#https, #host, and #port, we should get Host: #expectedValue")
-    void testHostHeader(string host, int port, bool https, string expectedValue)
+        public void testHostHeader(string host, int port, bool https, string expectedValue)
         {
 
 //        given: "a client socket and a server socket"

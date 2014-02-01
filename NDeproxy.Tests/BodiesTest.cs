@@ -12,7 +12,7 @@ namespace NDeproxy.Tests
         string body;
 
         [SetUp]
-        void setUp()
+        public void setUp()
         {
             deproxy = new Deproxy();
             port = PortFinder.Singleton.getNextOpenPort();
@@ -22,7 +22,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testRequestBody()
+        public void testRequestBody()
         {
             var mc = this.deproxy.makeRequest(url: this.url, method: "POST", requestBody: body);
 
@@ -32,7 +32,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testResponseBody()
+        public void testResponseBody()
         {
 
             Handler handler = (request =>
@@ -47,7 +47,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testDefaultRequestHeadersForTextBody()
+        public void testDefaultRequestHeadersForTextBody()
         {
 
             var mc = this.deproxy.makeRequest(url: this.url, method: "POST",
@@ -63,7 +63,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testNoDefaultRequestHeadersForTextBody()
+        public void testNoDefaultRequestHeadersForTextBody()
         {
 
             var mc = this.deproxy.makeRequest(url: this.url, method: "POST",
@@ -78,7 +78,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testDefaultResponseHeadersForTextBody()
+        public void testDefaultResponseHeadersForTextBody()
         {
 
             Handler handler = (request =>
@@ -98,7 +98,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testNoDefaultResponseHeadersForTextBody()
+        public void testNoDefaultResponseHeadersForTextBody()
         {
 
             HandlerWithContext handler = ( Request request, HandlerContext context) =>
@@ -125,7 +125,7 @@ namespace NDeproxy.Tests
         }
 
         [TearDown]
-        void tearDown()
+        public void tearDown()
         {
             if (this.deproxy != null)
             {

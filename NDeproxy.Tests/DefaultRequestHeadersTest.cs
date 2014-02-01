@@ -12,7 +12,7 @@ namespace NDeproxy.Tests
         string _url;
 
         [SetUp]
-        void setUp()
+        public void setUp()
         {
             _port = PortFinder.Singleton.getNextOpenPort();
             _deproxy = new Deproxy();
@@ -21,7 +21,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testNotSpecified()
+        public void testNotSpecified()
         {
             var mc = _deproxy.makeRequest(_url);
             Assert.IsTrue(mc.sentRequest.headers.contains("Host"));
@@ -31,7 +31,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testExplicitOn()
+        public void testExplicitOn()
         {
             var mc = _deproxy.makeRequest(url: _url, addDefaultHeaders: true);
             Assert.IsTrue(mc.sentRequest.headers.contains("Host"));
@@ -41,7 +41,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testExplicitOff()
+        public void testExplicitOff()
         {
             var mc = _deproxy.makeRequest(url: _url, addDefaultHeaders: false);
             Assert.IsFalse(mc.sentRequest.headers.contains("Host"), "host header exists");
@@ -51,7 +51,7 @@ namespace NDeproxy.Tests
         }
 
         [TearDown]
-        void tearDown()
+        public void tearDown()
         {
             if (_deproxy != null)
             {

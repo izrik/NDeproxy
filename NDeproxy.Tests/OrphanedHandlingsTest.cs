@@ -14,7 +14,7 @@ namespace NDeproxy.Tests
         Deproxy otherClient;
 
         [SetUp]
-        void setup()
+        public void setup()
         {
             this.deproxy = new Deproxy();
             this.port = PortFinder.Singleton.getNextOpenPort();
@@ -23,7 +23,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testOrphanedHandlings()
+        public void testOrphanedHandlings()
         {
 
             var handler = Handlers.Delay(2000);
@@ -58,7 +58,7 @@ namespace NDeproxy.Tests
         }
 
         [TearDown]
-        void cleanup()
+        public void cleanup()
         {
 
             if (this.deproxy != null)

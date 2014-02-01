@@ -9,13 +9,13 @@ namespace NDeproxy.Tests
         HeaderCollection headers;
 
         [SetUp]
-        void setUp()
+        public void setUp()
         {
             this.headers = new HeaderCollection();
         }
 
         [Test]
-        void testSize()
+        public void testSize()
         {
             Assert.AreEqual(0, this.headers.size());
 
@@ -30,7 +30,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testContains()
+        public void testContains()
         {
             this.headers.add("Name", "Value");
 
@@ -39,7 +39,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testContainsCase()
+        public void testContainsCase()
         {
             this.headers.add("Name", "Value");
 
@@ -51,7 +51,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testFindAll()
+        public void testFindAll()
         {
             this.headers.add("A", "qwerty");
             this.headers.add("B", "asdf");
@@ -70,7 +70,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testGetFirstValue()
+        public void testGetFirstValue()
         {
             this.headers.add("Name", "Value");
 
@@ -82,7 +82,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testGetFirstValueWithDefault()
+        public void testGetFirstValueWithDefault()
         {
             this.headers.add("Name", "Value");
 
@@ -96,7 +96,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testGetAt()
+        public void testGetAt()
         {
             this.headers.add("Name", "Value");
 
@@ -108,7 +108,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testMapNotation()
+        public void testMapNotation()
         {
             this.headers.add("Name", "Value");
 
@@ -120,7 +120,7 @@ namespace NDeproxy.Tests
         }
 
         [Test]
-        void testGetCountByName()
+        public void testGetCountByName()
         {
 
             this.headers.add("A", "qwerty");
