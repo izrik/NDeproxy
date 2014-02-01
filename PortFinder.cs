@@ -36,7 +36,9 @@ namespace NDeproxy
                     {
                         var url = string.Format("http://localhost:{0}/", currentPort);
                         log.debug("Trying {0}", currentPort);
-                        Socket socket = SocketHelper.Client("localhost", currentPort);
+                        using (Socket socket = SocketHelper.Client("localhost", currentPort))
+                        {
+                        }
                     }
                 catch (SocketException e)
                     {
