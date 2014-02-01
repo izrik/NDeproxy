@@ -264,8 +264,7 @@ namespace NDeproxy
             {
                 log.debug("request line is null: {0}", requestLine);
 
-//                return []
-                throw new NotImplementedException();
+                return null;
             }
 
             log.debug("request line is not null: {0}", requestLine);
@@ -288,8 +287,7 @@ namespace NDeproxy
                 if (!version.StartsWith("HTTP/", StringComparison.Ordinal))
                 {
                     sendResponse(stream, new Response(400, null, null, string.Format("Bad request version \"{0}\"", version)));
-//                return []
-                    throw new NotImplementedException();
+                    return null;
                 }
 
             }
@@ -297,8 +295,7 @@ namespace NDeproxy
             {
 
                 sendResponse(stream, new Response(400));
-//                return []
-                throw new NotImplementedException();
+                return null;
             }
 
             log.debug("checking http protocol version: {0}", version);
@@ -308,8 +305,7 @@ namespace NDeproxy
             {
 
                 sendResponse(stream, new Response(505, null, null, string.Format("Invalid HTTP Version \"{0}\"}", version)));
-//                return []
-                throw new NotImplementedException();
+                return null;
             }
 
             HeaderCollection headers = HeaderReader.readHeaders(stream);
