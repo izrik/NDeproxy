@@ -131,7 +131,7 @@ namespace NDeproxy.Tests
             int i;
             for (i = 0; i < 100; i++)
             {
-                threads.Add(new Thread(x =>
+                var th = new Thread(x =>
                 {
                     startSignal.WaitOne(1000);
                     int port = PortFinder.Singleton.getNextOpenPort();
@@ -139,7 +139,9 @@ namespace NDeproxy.Tests
                     {
                         ports.Add(port);
                     }
-                }));
+                });
+                threads.Add(th);
+                th.Start();
             }
 
             startSignal.Set();
