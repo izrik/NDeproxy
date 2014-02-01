@@ -260,7 +260,7 @@ namespace NDeproxy
             log.debug("reading request line");
             var requestLine = LineReader.readLine(stream);
 
-            if (requestLine != null)
+            if (requestLine == null)
             {
                 log.debug("request line is null: {0}", requestLine);
 
