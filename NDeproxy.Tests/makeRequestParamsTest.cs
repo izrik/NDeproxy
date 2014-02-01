@@ -20,6 +20,7 @@ namespace NDeproxy.Tests
             this.urlbase = string.Format("http://localhost:{0}", port);
             this.deproxy.addEndpoint(this.port);
         }
+
         //    @Unroll("url param: path and query parameter combos: \"#pathPart#queryPart\" -> \"#expectedResult\"")
         [Test]
         [TestCase("", "", "/")]   
@@ -168,7 +169,9 @@ namespace NDeproxy.Tests
             then: //"the path in the sent request should be that of the path param"
             Assert.AreEqual("/parampath?query=value@%", mc.sentRequest.path);
         }
+
         // TODO: Test for non-ascii characters, illegal characters, escaping, etc.
+
         [TearDown]
         public void TearDown()
         {
