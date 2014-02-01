@@ -13,9 +13,8 @@ namespace NDeproxy
             _stream = stream;
         }
 
-        int read()
+        public override int Read()
         {
-
             int value = _stream.ReadByte();
 
             if (value < 0)
