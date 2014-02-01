@@ -58,6 +58,7 @@ namespace NDeproxy.Tests
                 {
                     _th.Abort();
                 }
+                _socket.Close();
             }
         }
 
