@@ -352,7 +352,7 @@ namespace NDeproxy
         void sendResponse(Stream stream, Response response, HandlerContext context = null)
         {
 
-            var writer = new StreamWriter(stream, Encoding.ASCII, 0);
+            var writer = new StreamWriter(stream, Encoding.ASCII);
 
             if (response.message == null)
             {
