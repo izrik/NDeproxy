@@ -44,8 +44,10 @@ namespace NDeproxy.Tests
             catch (SocketException ignored)
             {
                 // read times out, as expected
-                // check the SocketErrorCode property for time out
-                throw;
+                if (ignored.SocketErrorCode != SocketError.WouldBlock)
+                {
+                    throw;
+                }
             }
 
 //        and: "read the request that the connector sent from the server-side socket"
@@ -116,14 +118,15 @@ namespace NDeproxy.Tests
             }
             catch (SocketException ignored)
             {
-
                 // we're expecting the connector to send the request, and then
                 // wait for a server response. since there is no server in this
                 // case, it will timeout while waiting. then we just read the
                 // request from the server side of the socket.
 
-                //check SocketErrorCode property
-                throw;
+                if (ignored.SocketErrorCode != SocketError.WouldBlock)
+                {
+                    throw;
+                }
             }
 
 //        and: "read the request that the connector sent from the server-side socket"
