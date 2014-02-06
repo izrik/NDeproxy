@@ -82,7 +82,7 @@ namespace NDeproxy.Tests
             Request request = new Request(
                               "METHOD",
                               "/path/to/resource",
-                              new [] { "Name Value", "Content-Length 0" });
+                              new [] { "Name: Value", "Content-Length: 0" });
 
 
 
