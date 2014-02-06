@@ -4,7 +4,6 @@ using System.Threading;
 
 namespace NDeproxy
 {
-
     public class Handlers
     {
         // Handler function.
@@ -27,9 +26,11 @@ namespace NDeproxy
         {
             return Delay(timeout, nextHandler.WithContext());
         }
-        public static HandlerWithContext Delay(int timeout, HandlerWithContext nextHandler=null)
+
+        public static HandlerWithContext Delay(int timeout, HandlerWithContext nextHandler = null)
         {
-            if (nextHandler == null) nextHandler = Handlers.simpleHandler;
+            if (nextHandler == null)
+                nextHandler = Handlers.simpleHandler;
 
             return (Request request, HandlerContext context) =>
             {
@@ -50,11 +51,11 @@ namespace NDeproxy
             {
 
                 Request request2 = new Request(
-                                   request.method,
-                                   request.path,
-                                   new HeaderCollection(request.headers),
-                                   request.body
-                               );
+                                       request.method,
+                                       request.path,
+                                       new HeaderCollection(request.headers),
+                                       request.body
+                                   );
 
                 if (request2.headers.contains("Host"))
                 {

@@ -18,6 +18,7 @@ namespace NDeproxy
             : this(defaultHandler.WithContext(), handlers)
         {
         }
+
         public MessageChain(HandlerWithContext defaultHandler = null,
                             Dictionary<Endpoint, HandlerWithContext> handlers = null)
         {

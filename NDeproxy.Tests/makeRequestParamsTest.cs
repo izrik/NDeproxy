@@ -20,7 +20,6 @@ namespace NDeproxy.Tests
             this.urlbase = string.Format("http://localhost:{0}", port);
             this.deproxy.addEndpoint(this.port);
         }
-
         //    @Unroll("url param: path and query parameter combos: \"#pathPart#queryPart\" -> \"#expectedResult\"")
         [Test]
         [TestCase("", "", "/")]   
@@ -78,7 +77,7 @@ namespace NDeproxy.Tests
             given:
             string hostValueAtConnector = null;
             var captureHostParam = new DummyClientConnector(
-                                   (request, https, host, port, rparams) =>
+                                       (request, https, host, port, rparams) =>
                 {
 
                     // by overriding the client connector, we can record what host value it received and skip  an actual TCP connection
@@ -90,9 +89,9 @@ namespace NDeproxy.Tests
 
             when: //"send a request with an explicit path param"
             var mc = this.deproxy.makeRequest(
-                     url: string.Format("{0}/urlpath", urlbase),
-                     host: hostname,
-                     clientConnector: captureHostParam);
+                         url: string.Format("{0}/urlpath", urlbase),
+                         host: hostname,
+                         clientConnector: captureHostParam);
 
             then: //"the host in the sent request (and in the Host header) should be that of the host param"
             Assert.AreEqual(hostname, hostValueAtConnector);
@@ -105,7 +104,7 @@ namespace NDeproxy.Tests
             given:
             string hostValueAtConnector = null;
             var captureHostParam = new DummyClientConnector(
-                                   (request, https, host, port, rparams) =>
+                                       (request, https, host, port, rparams) =>
                 {
 
                     // by overriding the client connector, we can record what host value it received and skip  an actual TCP connection
@@ -117,9 +116,9 @@ namespace NDeproxy.Tests
 
             when: //"send a request with an explicit path param"
             var mc = this.deproxy.makeRequest(
-                     url: string.Format("{0}/urlpath", urlbase),
-                     host: hostname,
-                     clientConnector: captureHostParam);
+                         url: string.Format("{0}/urlpath", urlbase),
+                         host: hostname,
+                         clientConnector: captureHostParam);
 
             then: //"the host in the sent request (and in the Host header) should be that of the host param"
             Assert.AreEqual(hostname, hostValueAtConnector);
@@ -132,7 +131,7 @@ namespace NDeproxy.Tests
             given:
             int? portValueAtConnector = null;
             var capturePortParam = new DummyClientConnector(
-                                   (request, https, host, port, rparams) =>
+                                       (request, https, host, port, rparams) =>
                 {
                     // by overriding the client connector, we can record what port value it received and skip an actual TCP connection
                     portValueAtConnector = port;
@@ -143,9 +142,9 @@ namespace NDeproxy.Tests
 
             when: //"send a request with an explicit path param"
             var mc = this.deproxy.makeRequest(
-                     url: "http://localhost:8080/urlpath",
-                     port: expectedPort,
-                     clientConnector: capturePortParam);
+                         url: "http://localhost:8080/urlpath",
+                         port: expectedPort,
+                         clientConnector: capturePortParam);
 
             then: //"the host in the sent request (and in the Host header) should be that of the host param"
             Assert.AreEqual(expectedPort, portValueAtConnector);
@@ -172,9 +171,7 @@ namespace NDeproxy.Tests
             then: //"the path in the sent request should be that of the path param"
             Assert.AreEqual("/parampath?query=value@%", mc.sentRequest.path);
         }
-
         // TODO: Test for non-ascii characters, illegal characters, escaping, etc.
-
         [TearDown]
         public void TearDown()
         {

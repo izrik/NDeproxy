@@ -32,6 +32,7 @@ namespace NDeproxy
             : this(code.ToString(), message, headers, body)
         {
         }
+
         public Response(string code, string message = null, object headers = null, object body = null)
         {
 
@@ -59,7 +60,7 @@ namespace NDeproxy
                 body = "";
             }
             else if (!(body is byte[]) &&
-                   !(body is string))
+                     !(body is string))
             {
                 body = body.ToString();
             }

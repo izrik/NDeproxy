@@ -25,13 +25,13 @@ namespace NDeproxy.Tests
         {
 
             var mc = this.deproxy.makeRequest(url: this.url,
-                     defaultHandler: (request =>
+                         defaultHandler: (request =>
                     new Response(
-                         code: 606,
-                         message: "Spoiler",
-                         headers: "Header-Name: Header-Value",
-                         body: "Snape kills Dumbledore")
-                     ));
+                             code: 606,
+                             message: "Spoiler",
+                             headers: "Header-Name: Header-Value",
+                             body: "Snape kills Dumbledore")
+                         ));
 
             Assert.AreEqual(1, mc.handlings.Count);
             Assert.AreEqual("606", mc.handlings[0].response.code);
@@ -51,7 +51,7 @@ namespace NDeproxy.Tests
         public void testCustomHandlerMethod()
         {
             var mc = this.deproxy.makeRequest(url: this.url,
-                     defaultHandler: customHandlerMethod);
+                         defaultHandler: customHandlerMethod);
 
             Assert.AreEqual(1, mc.handlings.Count);
             Assert.AreEqual("606", mc.handlings[0].response.code);
@@ -71,7 +71,7 @@ namespace NDeproxy.Tests
         public void testCustomHandlerStaticMethod()
         {
             var mc = this.deproxy.makeRequest(url: this.url,
-                     defaultHandler: CustomHandlersTest.customHandlerStaticMethod);
+                         defaultHandler: CustomHandlersTest.customHandlerStaticMethod);
 
             Assert.AreEqual(1, mc.handlings.Count);
             Assert.AreEqual("606", mc.handlings[0].response.code);
@@ -83,13 +83,13 @@ namespace NDeproxy.Tests
         {
 
             var mc = this.deproxy.makeRequest(url: this.url,
-                     defaultHandler: (request, context) =>
+                         defaultHandler: (request, context) =>
                     new Response(
-                         code: 606,
-                         message: "Spoiler",
-                         headers: new [] { "Header-Name: Header-Value", "Context-Object: " + context.ToString() },
-                         body: "Snape kills Dumbledore")
-                 );
+                             code: 606,
+                             message: "Spoiler",
+                             headers: new [] { "Header-Name: Header-Value", "Context-Object: " + context.ToString() },
+                             body: "Snape kills Dumbledore")
+                     );
 
             Assert.AreEqual("606", mc.receivedResponse.code);
             Assert.IsTrue(mc.receivedResponse.headers.contains("Header-Name"));
@@ -103,7 +103,7 @@ namespace NDeproxy.Tests
         }
 
         Response customHandlerMethodWithContext(Request request,
-                                            HandlerContext context)
+                                                HandlerContext context)
         {
             return new Response(
                 606,
@@ -116,7 +116,7 @@ namespace NDeproxy.Tests
         public void testCustomHandlerMethodWithContext()
         {
             var mc = this.deproxy.makeRequest(url: this.url,
-                     defaultHandler: this.customHandlerMethodWithContext);
+                         defaultHandler: this.customHandlerMethodWithContext);
 
             Assert.AreEqual("606", mc.receivedResponse.code);
             Assert.IsTrue(mc.receivedResponse.headers.contains("Header-Name"));
@@ -144,7 +144,7 @@ namespace NDeproxy.Tests
         public void testCustomHandlerStaticMethodWithContext()
         {
             var mc = this.deproxy.makeRequest(url: this.url,
-                     defaultHandler: CustomHandlersTest.customHandlerStaticMethodWithContext);
+                         defaultHandler: CustomHandlersTest.customHandlerStaticMethodWithContext);
 
             Assert.AreEqual("606", mc.receivedResponse.code);
             Assert.IsTrue(mc.receivedResponse.headers.contains("Header-Name"));

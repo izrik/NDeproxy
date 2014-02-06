@@ -40,7 +40,7 @@ namespace NDeproxy
                 body = "";
             }
             else if (!(body is byte[]) &&
-                   !(body is string))
+                     !(body is string))
             {
                 body = body.ToString();
             }

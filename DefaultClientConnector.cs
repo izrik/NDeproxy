@@ -35,7 +35,7 @@ namespace NDeproxy
 
                     }
                     else if (!request.headers.contains("Transfer-Encoding") ||
-                           request.headers["Transfer-Encoding"] == "identity")
+                             request.headers["Transfer-Encoding"] == "identity")
                     {
 
                         int length;

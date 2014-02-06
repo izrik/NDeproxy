@@ -9,7 +9,7 @@ namespace NDeproxy
     {
         static readonly Logger log = new Logger("SocketHelper");
 
-        public static Socket Server(int port, int listenQueue=5)
+        public static Socket Server(int port, int listenQueue = 5)
         {
             var s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             s.Bind(new IPEndPoint(IPAddress.Any, port));
@@ -17,7 +17,7 @@ namespace NDeproxy
             return s;
         }
 
-        public static Socket Client(string remoteHost, int port, int timeout=Timeout.Infinite)
+        public static Socket Client(string remoteHost, int port, int timeout = Timeout.Infinite)
         {
             var s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             if (timeout == Timeout.Infinite)
@@ -27,7 +27,10 @@ namespace NDeproxy
             }
             else
             {
-                var result = s.BeginConnect(remoteHost, port, (_result) => { s.EndConnect(_result); }, s);
+                var result = s.BeginConnect(remoteHost, port, (_result) =>
+                {
+                    s.EndConnect(_result);
+                }, s);
 
                 if (result.AsyncWaitHandle.WaitOne(timeout))
                 {
@@ -50,7 +53,7 @@ namespace NDeproxy
             return ((IPEndPoint)socket.RemoteEndPoint).Port;
         }
 
-        public static bool IsClosed(this Socket socket, int timeoutMicroSeconds=1)
+        public static bool IsClosed(this Socket socket, int timeoutMicroSeconds = 1)
         {
             return (socket.Poll(timeoutMicroSeconds, SelectMode.SelectRead) && socket.Available < 1);
         }

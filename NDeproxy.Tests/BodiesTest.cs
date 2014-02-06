@@ -37,7 +37,7 @@ namespace NDeproxy.Tests
 
             Handler handler = (request =>
             new Response(200, "OK", "Content-type: text/plain", body)
-                          );
+                              );
 
             var mc = this.deproxy.makeRequest(url: this.url, defaultHandler: handler);
 
@@ -51,7 +51,7 @@ namespace NDeproxy.Tests
         {
 
             var mc = this.deproxy.makeRequest(url: this.url, method: "POST",
-                     requestBody: body);
+                         requestBody: body);
 
             Assert.AreEqual(body, mc.sentRequest.body);
             Assert.AreEqual(1, mc.sentRequest.headers.getCountByName("Content-Type"));
@@ -67,8 +67,8 @@ namespace NDeproxy.Tests
         {
 
             var mc = this.deproxy.makeRequest(url: this.url, method: "POST",
-                     requestBody: body,
-                     addDefaultHeaders: false);
+                         requestBody: body,
+                         addDefaultHeaders: false);
 
             Assert.AreEqual(body, mc.sentRequest.body);
             Assert.AreEqual(0, mc.sentRequest.headers.getCountByName("Content-Type"));
@@ -83,10 +83,10 @@ namespace NDeproxy.Tests
 
             Handler handler = (request =>
              new Response(200, "OK", null, body)
-                          );
+                              );
 
             var mc = this.deproxy.makeRequest(url: this.url,
-                     defaultHandler: handler);
+                         defaultHandler: handler);
 
             Assert.AreEqual(body, mc.receivedResponse.body);
             Assert.AreEqual(1, mc.receivedResponse.headers.getCountByName("Content-Type"));
@@ -108,7 +108,7 @@ namespace NDeproxy.Tests
             };
 
             var mc = this.deproxy.makeRequest(url: this.url,
-                     defaultHandler: handler);
+                         defaultHandler: handler);
 
             Assert.AreEqual("200", mc.receivedResponse.code);
             Assert.AreEqual(1, mc.receivedResponse.headers.size());

@@ -7,6 +7,5 @@ namespace NDeproxy
     {
         void shutdown();
     }
-
     public delegate ServerConnector ServerConnectorFactory(Endpoint endpoint, string name);
 }

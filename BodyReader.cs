@@ -9,7 +9,7 @@ namespace NDeproxy
     {
         static readonly Logger log = new Logger("BodyReader");
 
-        public static object readBody(Stream inStream, HeaderCollection headers, bool tryConvertToString=true)
+        public static object readBody(Stream inStream, HeaderCollection headers, bool tryConvertToString = true)
         {
 
             if (headers == null)
@@ -126,20 +126,20 @@ namespace NDeproxy
                         // use startsWith in order to ignore any charset or other
                         // parameters on the header value
                         if (contentType.StartsWith("text/") ||
-                        contentType.StartsWith("application/atom+xml") ||
-                        contentType.StartsWith("application/ecmascript") ||
-                        contentType.StartsWith("application/json") ||
-                        contentType.StartsWith("application/javascript") ||
-                        contentType.StartsWith("application/rdf+xml") ||
-                        contentType.StartsWith("application/rss+xml") ||
-                        contentType.StartsWith("application/soap+xml") ||
-                        contentType.StartsWith("application/xhtml+xml") ||
-                        contentType.StartsWith("application/xml") ||
-                        contentType.StartsWith("application/xml-dtd") ||
-                        contentType.StartsWith("application/xop+xml") ||
-                        contentType.StartsWith("image/svg+xml") ||
-                        contentType.StartsWith("message/http") ||
-                        contentType.StartsWith("message/imdn+xml"))
+                            contentType.StartsWith("application/atom+xml") ||
+                            contentType.StartsWith("application/ecmascript") ||
+                            contentType.StartsWith("application/json") ||
+                            contentType.StartsWith("application/javascript") ||
+                            contentType.StartsWith("application/rdf+xml") ||
+                            contentType.StartsWith("application/rss+xml") ||
+                            contentType.StartsWith("application/soap+xml") ||
+                            contentType.StartsWith("application/xhtml+xml") ||
+                            contentType.StartsWith("application/xml") ||
+                            contentType.StartsWith("application/xml-dtd") ||
+                            contentType.StartsWith("application/xop+xml") ||
+                            contentType.StartsWith("image/svg+xml") ||
+                            contentType.StartsWith("message/http") ||
+                            contentType.StartsWith("message/imdn+xml"))
                         {
 
                             tryCharData = true;

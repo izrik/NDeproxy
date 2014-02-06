@@ -34,8 +34,6 @@ namespace NDeproxy
         //    static readonly string portPattern          = /(?x) ( [\d]* )/
         static readonly string portPattern = @"( [\d]* )";
 
-
-
         public static string CreateHostHeaderValue(string host, int? port = null, bool? https = null)
         {
 

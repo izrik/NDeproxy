@@ -52,14 +52,14 @@ namespace NDeproxy.Tests
 
             given: //"define the expected request string, and the string to return from the fake server"
             string requestString = (string.Format("METHOD /path/to/resource HTTP/1.1\r\n" +
-                               "Name: Value\r\n" +
-                               "Content-Length: 0\r\n" +
-                               "Host: localhost:{0}\r\n" +
-                               "\r\n", port));
+                                   "Name: Value\r\n" +
+                                   "Content-Length: 0\r\n" +
+                                   "Host: localhost:{0}\r\n" +
+                                   "\r\n", port));
             string responseString = ("HTTP/1.1 606 Spoiler\r\n" +
-                                "Server: StaticTcpServer\r\n" +
-                                "Content-Length: 0\r\n" +
-                                "\r\n");
+                                    "Server: StaticTcpServer\r\n" +
+                                    "Content-Length: 0\r\n" +
+                                    "\r\n");
 
 //        and: "set up the fake server"
             var pair = LocalSocketPair.createLocalSocketPair();
@@ -80,9 +80,9 @@ namespace NDeproxy.Tests
 //        and: "set up the router and request"
             var router = Handlers.Route("localhost", port, false, connector);
             Request request = new Request(
-                              "METHOD",
-                              "/path/to/resource",
-                              new [] { "Name: Value", "Content-Length: 0" });
+                                  "METHOD",
+                                  "/path/to/resource",
+                                  new [] { "Name: Value", "Content-Length: 0" });
 
 
 

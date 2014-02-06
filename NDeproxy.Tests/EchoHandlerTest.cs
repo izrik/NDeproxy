@@ -11,8 +11,8 @@ namespace NDeproxy.Tests
         {
 
             var response = Handlers.echoHandler(
-                           new Request("GET", "/", "x-header: 12345", "this is the body"),
-                           new HandlerContext());
+                               new Request("GET", "/", "x-header: 12345", "this is the body"),
+                               new HandlerContext());
 
             Assert.AreEqual("200", response.code);
             Assert.IsTrue(response.headers.contains("x-header"));

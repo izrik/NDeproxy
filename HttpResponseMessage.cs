@@ -9,7 +9,7 @@ namespace NDeproxy
      * Table mapping response codes to messages
      * See RFC 2616.
      */
-        public static Dictionary<string, string> messagesByResponseCode = new Dictionary<string, string>{
+        public static Dictionary<string, string> messagesByResponseCode = new Dictionary<string, string> {
             { "100", "Continue" },
             { "101", "Switching Protocols" },
             { "200", "OK" },
@@ -55,7 +55,7 @@ namespace NDeproxy
      * Table mapping response codes to default bodies
      * See RFC 2616.
      */
-        public static Dictionary<string, string> defaultBodiesByResponseCode = new Dictionary<string, string>{
+        public static Dictionary<string, string> defaultBodiesByResponseCode = new Dictionary<string, string> {
             { "100", "Request received, please continue" },
             { "101", "Switching to new protocol; obey Upgrade header" },
             { "200", "Request fulfilled, document follows" },

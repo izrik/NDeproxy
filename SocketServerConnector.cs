@@ -235,7 +235,7 @@ namespace NDeproxy
                         persistConnection = ret.Item2;
 
                         if (persistConnection &&
-                                request.headers.contains("Connection"))
+                            request.headers.contains("Connection"))
                         {
                             foreach (var value in request.headers.findAll("Connection"))
                             {
@@ -256,7 +256,7 @@ namespace NDeproxy
                         sendResponse(stream, rwc.response, rwc.context);
 
                         if (persistConnection &&
-                                rwc.response.headers.contains("Connection"))
+                            rwc.response.headers.contains("Connection"))
                         {
                             foreach (var value in rwc.response.headers.findAll("Connection"))
                             {
@@ -277,7 +277,7 @@ namespace NDeproxy
                     log.error("there was an error: {0}", e);
                     if (_stopSignal.WaitOne(0) ||
                         (socket != null &&
-                            socket.IsClosed()))
+                        socket.IsClosed()))
                     {
                         // do nothing
                     }

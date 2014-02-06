@@ -8,7 +8,6 @@ namespace NDeproxy
     public class PortFinder
     {
         static readonly Logger log = new Logger("PortFinder");
-
         public static readonly PortFinder Singleton = new PortFinder();
 
         public PortFinder(int start = 10000)
@@ -18,10 +17,9 @@ namespace NDeproxy
 
         public int currentPort;
         public int skips = 0;
-
         readonly object _lock = new object();
 
-        public int getNextOpenPort(int newStartPort=-1, int sleepTime=0)
+        public int getNextOpenPort(int newStartPort = -1, int sleepTime = 0)
         {
             lock (_lock)
             {
@@ -40,7 +38,7 @@ namespace NDeproxy
                         {
                         }
                     }
-                catch (SocketException e)
+                    catch (SocketException e)
                     {
                         if (e.SocketErrorCode == SocketError.ConnectionRefused)
                         {

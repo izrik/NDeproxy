@@ -33,17 +33,17 @@ namespace NDeproxy.Tests
             string length = body.Length.ToString("X");
 
             string requestString = (string.Format("GET / HTTP/1.1\r\n" +
-                               "Transfer-Encoding: chunked\r\n" +
-                               "\r\n" +
-                               "{0}\r\n" + // chunk-size, with no chunk-extension
-                               "{1}\r\n" + // chunk-data
-                               "0\r\n" + // last-chunk, with no chunk-extension
-                               "\r\n", length, body)); // end of chunked body, no trailer
+                                   "Transfer-Encoding: chunked\r\n" +
+                                   "\r\n" +
+                                   "{0}\r\n" + // chunk-size, with no chunk-extension
+                                   "{1}\r\n" + // chunk-data
+                                   "0\r\n" + // last-chunk, with no chunk-extension
+                                   "\r\n", length, body)); // end of chunked body, no trailer
 
             string responseString = ("HTTP/1.1 200 OK\r\n" +
-                                "Server: StaticTcpServer\r\n" +
-                                "Content-Length: 0\r\n" +
-                                "\r\n");
+                                    "Server: StaticTcpServer\r\n" +
+                                    "Content-Length: 0\r\n" +
+                                    "\r\n");
 
             var pair = LocalSocketPair.createLocalSocketPair();
             var client = pair.Item1;
@@ -68,7 +68,7 @@ namespace NDeproxy.Tests
             BareClientConnector clientConnector = new BareClientConnector(client);
 
             Response response = clientConnector.sendRequest(request, false,
-                                "localhost", ((IPEndPoint)server.LocalEndPoint).Port, rparams);
+                                    "localhost", ((IPEndPoint)server.LocalEndPoint).Port, rparams);
 
 
 
@@ -98,25 +98,25 @@ namespace NDeproxy.Tests
 
             var port = (server.GetLocalPort() == 80 ? "" : (":" + server.GetLocalPort().ToString()));
             string requestString = (string.Format("GET / HTTP/1.1\r\n" +
-                               "Transfer-Encoding: chunked\r\n" +
-                               "Host: localhost{0}\r\n" +
-                               "Accept: */*\r\n" +
-                               "Accept-Encoding: identity\r\n" +
-                               "User-Agent: {1}\r\n" +
-                               "\r\n" +
-                               "{2}\r\n" + // chunk-size, with no chunk-extension
-                               "{3}\r\n" + // chunk-data
-                               "0\r\n" + // last-chunk, with no chunk-extension
-                               "\r\n", 
-                                   port,
-                                   Deproxy.VERSION_STRING,
-                                   length,
-                                   body)); // end of chunked body, no trailer
+                                   "Transfer-Encoding: chunked\r\n" +
+                                   "Host: localhost{0}\r\n" +
+                                   "Accept: */*\r\n" +
+                                   "Accept-Encoding: identity\r\n" +
+                                   "User-Agent: {1}\r\n" +
+                                   "\r\n" +
+                                   "{2}\r\n" + // chunk-size, with no chunk-extension
+                                   "{3}\r\n" + // chunk-data
+                                   "0\r\n" + // last-chunk, with no chunk-extension
+                                   "\r\n", 
+                                       port,
+                                       Deproxy.VERSION_STRING,
+                                       length,
+                                       body)); // end of chunked body, no trailer
 
             string responseString = ("HTTP/1.1 200 OK\r\n" +
-                                "Server: StaticTcpServer\r\n" +
-                                "Content-Length: 0\r\n" +
-                                "\r\n");
+                                    "Server: StaticTcpServer\r\n" +
+                                    "Content-Length: 0\r\n" +
+                                    "\r\n");
 
             string serverSideRequest = null;
 
@@ -135,7 +135,7 @@ namespace NDeproxy.Tests
             DefaultClientConnector clientConnector = new DefaultClientConnector(client);
 
             Response response = clientConnector.sendRequest(request, false,
-                                "localhost", server.GetLocalPort(), rparams);
+                                    "localhost", server.GetLocalPort(), rparams);
 
 
 
@@ -163,25 +163,25 @@ namespace NDeproxy.Tests
 
             string length = body.Length.ToString("X");
             string requestString = (string.Format("GET / HTTP/1.1\r\n" +
-                               "Host: localhost:{0}\r\n" +
-                               "Content-Type: text/plain\r\n" +
-                               "Transfer-Encoding: chunked\r\n" +
-                               "Accept: */*\r\n" +
-                               "Accept-Encoding: identity\r\n" +
-                               "User-Agent: Canned-string\r\n" +
-                               "\r\n" +
-                               "{1}\r\n" + // chunk-size, with no chunk-extension
-                               "{2}\r\n" + // chunk-data
-                               "0\r\n" + // last-chunk, with no chunk-extension
-                               "\r\n",
-                                   port,
-                                   length,
-                                   body)); // end of chunked body, no trailer
+                                   "Host: localhost:{0}\r\n" +
+                                   "Content-Type: text/plain\r\n" +
+                                   "Transfer-Encoding: chunked\r\n" +
+                                   "Accept: */*\r\n" +
+                                   "Accept-Encoding: identity\r\n" +
+                                   "User-Agent: Canned-string\r\n" +
+                                   "\r\n" +
+                                   "{1}\r\n" + // chunk-size, with no chunk-extension
+                                   "{2}\r\n" + // chunk-data
+                                   "0\r\n" + // last-chunk, with no chunk-extension
+                                   "\r\n",
+                                       port,
+                                       length,
+                                       body)); // end of chunked body, no trailer
 
             string responseString = ("HTTP/1.1 200 OK\r\n" +
-                                "Server: StaticTcpServer\r\n" +
-                                "Content-Length: 0\r\n" +
-                                "\r\n");
+                                    "Server: StaticTcpServer\r\n" +
+                                    "Content-Length: 0\r\n" +
+                                    "\r\n");
 
 
             var ssc = (SocketServerConnector)endpoint.serverConnector;
@@ -192,8 +192,8 @@ namespace NDeproxy.Tests
             var t = new Thread((x) =>
             //request-on-the-side-to-get-orphan
             mc = deproxy.makeRequest(url: url, defaultHandler: Handlers.Delay(2000),
-                    addDefaultHeaders: true)
-                );
+                        addDefaultHeaders: true)
+                    );
             t.Start();
 
             var stream = new UnbufferedSocketStream(client);
@@ -217,16 +217,16 @@ namespace NDeproxy.Tests
             string length = body.Length.ToString("X");
 
             string responseString = (string.Format("HTTP/1.1 200 OK\r\n" +
-                                "Server: StaticTcpServer\r\n" +
-                                "Transfer-Encoding: chunked\r\n" +
-                                "\r\n" +
-                                "{0}\r\n" + // chunk-size, with no chunk-extension
-                                "{1}\r\n" + // chunk-data
-                                "0\r\n" + // last-chunk, with no chunk-extension
-                                "\r\n",  // end of chunked body, no trailer
-                                    length,
-                                    body
-                                ));
+                                    "Server: StaticTcpServer\r\n" +
+                                    "Transfer-Encoding: chunked\r\n" +
+                                    "\r\n" +
+                                    "{0}\r\n" + // chunk-size, with no chunk-extension
+                                    "{1}\r\n" + // chunk-data
+                                    "0\r\n" + // last-chunk, with no chunk-extension
+                                    "\r\n",  // end of chunked body, no trailer
+                                        length,
+                                        body
+                                    ));
 
             var pair = LocalSocketPair.createLocalSocketPair();
             var client = pair.Item1;
@@ -245,14 +245,14 @@ namespace NDeproxy.Tests
             t.Start();
 
             Request request = new Request("GET", "/",
-                              "Transfer-Encoding: chunked", body);
+                                  "Transfer-Encoding: chunked", body);
 
             BareClientConnector clientConnector = new BareClientConnector(client);
 
 
 
             Response response = clientConnector.sendRequest(request, false,
-                                "localhost", server.GetLocalPort(), new RequestParams());
+                                    "localhost", server.GetLocalPort(), new RequestParams());
 
 
 
@@ -274,15 +274,15 @@ namespace NDeproxy.Tests
             string length = body.Length.ToString("X");
 
             string responseString = (string.Format("HTTP/1.1 200 OK\r\n" +
-                                "Server: StaticTcpServer\r\n" +
-                                "Transfer-Encoding: chunked\r\n" +
-                                "\r\n" +
-                                "{0}\r\n" + // chunk-size, with no chunk-extension
-                                "{1}\r\n" + // chunk-data
-                                "0\r\n" + // last-chunk, with no chunk-extension
-                                "\r\n",  // end of chunked body, no trailer
-                                    length, body
-                                ));
+                                    "Server: StaticTcpServer\r\n" +
+                                    "Transfer-Encoding: chunked\r\n" +
+                                    "\r\n" +
+                                    "{0}\r\n" + // chunk-size, with no chunk-extension
+                                    "{1}\r\n" + // chunk-data
+                                    "0\r\n" + // last-chunk, with no chunk-extension
+                                    "\r\n",  // end of chunked body, no trailer
+                                        length, body
+                                    ));
 
             var pair = LocalSocketPair.createLocalSocketPair();
             var client = pair.Item1;
@@ -301,14 +301,14 @@ namespace NDeproxy.Tests
             t.Start();
 
             Request request = new Request("GET", "/",
-                              "Transfer-Encoding: chunked", body);
+                                  "Transfer-Encoding: chunked", body);
 
             DefaultClientConnector clientConnector = new DefaultClientConnector(client);
 
 
 
             Response response = clientConnector.sendRequest(request, false,
-                                "localhost", (server.LocalEndPoint as IPEndPoint).Port, new RequestParams());
+                                    "localhost", (server.LocalEndPoint as IPEndPoint).Port, new RequestParams());
 
 
 
@@ -330,25 +330,25 @@ namespace NDeproxy.Tests
 
             string length = body.Length.ToString("X");
             string requestString = ("GET / HTTP/1.1\r\n" +
-                               "Host: localhost\r\n" +
-                               "Content-Length: 0\r\n" +
-                               "Accept: */*\r\n" +
-                               "User-Agent: Canned-string\r\n" +
-                               "\r\n");
+                                   "Host: localhost\r\n" +
+                                   "Content-Length: 0\r\n" +
+                                   "Accept: */*\r\n" +
+                                   "User-Agent: Canned-string\r\n" +
+                                   "\r\n");
 
             string responseString = (string.Format("HTTP/1.1 200 OK\r\n" +
-                                "Server: {0}\r\n" +
-                                "Date: EEE, dd MMM yyyy HH:mm:ss zzz\r\n" +
-                                "Transfer-Encoding: chunked\r\n" +
-                                "\r\n" +
-                                "{1}\r\n" + // chunk-size, with no chunk-extension
-                                "{2}\r\n" + // chunk-data
-                                "0\r\n" + // last-chunk, with no chunk-extension
-                                "\r\n",
-                                    Deproxy.VERSION_STRING,
-                                    length,
-                                    body // end of chunked body, no trailer
-                                ));
+                                    "Server: {0}\r\n" +
+                                    "Date: EEE, dd MMM yyyy HH:mm:ss zzz\r\n" +
+                                    "Transfer-Encoding: chunked\r\n" +
+                                    "\r\n" +
+                                    "{1}\r\n" + // chunk-size, with no chunk-extension
+                                    "{2}\r\n" + // chunk-data
+                                    "0\r\n" + // last-chunk, with no chunk-extension
+                                    "\r\n",
+                                        Deproxy.VERSION_STRING,
+                                        length,
+                                        body // end of chunked body, no trailer
+                                    ));
             byte[] responseBytes = Encoding.ASCII.GetBytes(responseString);
 
             // setup deproxy and endpoint
@@ -442,13 +442,13 @@ namespace NDeproxy.Tests
 
             string length = body.Length.ToString("X");
             var cbody = (string.Format(
-                        "{0}\r\n" + // chunk-size, with no chunk-extension
-                        "{1}\r\n" + // chunk-data
-                        "0\r\n" + // last-chunk, with no chunk-extension
-                        "\r\n", // end of chunked body, no trailer
-                        length,
-                        body
-                    ));
+                            "{0}\r\n" + // chunk-size, with no chunk-extension
+                            "{1}\r\n" + // chunk-data
+                            "0\r\n" + // last-chunk, with no chunk-extension
+                            "\r\n", // end of chunked body, no trailer
+                            length,
+                            body
+                        ));
             var chunkedBody = Encoding.ASCII.GetBytes(cbody);
             var outStream = new MemoryStream(chunkedBody.Length);
 
@@ -466,13 +466,13 @@ namespace NDeproxy.Tests
 
             string length = body.Length.ToString("X");
             var cbody = (string.Format(
-                        "{0}\r\n" + // chunk-size, with no chunk-extension
-                        "{1}\r\n" + // chunk-data
-                        "0\r\n" + // last-chunk, with no chunk-extension
-                        "\r\n", // end of chunked body, no trailer
-                        length,
-                        body
-                    ));
+                            "{0}\r\n" + // chunk-size, with no chunk-extension
+                            "{1}\r\n" + // chunk-data
+                            "0\r\n" + // last-chunk, with no chunk-extension
+                            "\r\n", // end of chunked body, no trailer
+                            length,
+                            body
+                        ));
             byte[] chunkedBody = Encoding.ASCII.GetBytes(cbody);
             var outStream = new MemoryStream(chunkedBody.Length);
 
@@ -490,12 +490,12 @@ namespace NDeproxy.Tests
 
             string length = body.Length.ToString("X");
             var cbody = string.Format(
-                        "{0}\r\n" + // chunk-size, with no chunk-extension
-                        "{1}\r\n" + // chunk-data
-                        "0\r\n" + // last-chunk, with no chunk-extension
-                        "\r\n", // end of chunked body, no trailer
-                        length,
-                        body);
+                            "{0}\r\n" + // chunk-size, with no chunk-extension
+                            "{1}\r\n" + // chunk-data
+                            "0\r\n" + // last-chunk, with no chunk-extension
+                            "\r\n", // end of chunked body, no trailer
+                            length,
+                            body);
             byte[] chunkedBody = Encoding.ASCII.GetBytes(cbody);
             var inStream = new MemoryStream(chunkedBody);
 
@@ -512,19 +512,19 @@ namespace NDeproxy.Tests
 
             string length = body.Length.ToString("X");
             var cbody = (string.Format(
-                        "{0}\r\n" + // chunk-size, with no chunk-extension
-                        "{1}\r\n" + // chunk-data
-                        "0\r\n" + // last-chunk, with no chunk-extension
-                        "\r\n", // end of chunked body, no trailer
-                        length,
-                        body
-                    ));
+                            "{0}\r\n" + // chunk-size, with no chunk-extension
+                            "{1}\r\n" + // chunk-data
+                            "0\r\n" + // last-chunk, with no chunk-extension
+                            "\r\n", // end of chunked body, no trailer
+                            length,
+                            body
+                        ));
             byte[] chunkedBody = Encoding.ASCII.GetBytes(cbody);
             var inStream = new MemoryStream(chunkedBody);
             HeaderCollection headers = new HeaderCollection("Transfer-Encoding: chunked");
 
 
-            byte[] bytesRead = (byte[])BodyReader.readBody(inStream, headers, tryConvertToString:false);
+            byte[] bytesRead = (byte[])BodyReader.readBody(inStream, headers, tryConvertToString: false);
 
 
             Assert.AreEqual(Encoding.ASCII.GetBytes(body), bytesRead);
