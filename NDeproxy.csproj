@@ -68,4 +68,10 @@
     <Compile Include="UnbufferedSocketStream.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="LICENSE" />
+    <None Include="HISTORY.rst" />
+    <None Include="README.rst" />
+    <None Include="TODO" />
+  </ItemGroup>
 </Project>
