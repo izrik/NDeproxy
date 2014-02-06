@@ -17,11 +17,27 @@ namespace NDeproxy
             return s;
         }
 
-        public static Socket Client(string remoteHost, int port)
+        public static Socket Client(string remoteHost, int port, int timeout=Timeout.Infinite)
         {
             var s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            s.Connect(remoteHost, port);
-            return s;
+            if (timeout == Timeout.Infinite)
+            {
+                s.Connect(remoteHost, port);
+                return s;
+            }
+            else
+            {
+                var result = s.BeginConnect(remoteHost, port, (_result) => { s.EndConnect(_result); }, s);
+
+                if (result.AsyncWaitHandle.WaitOne(timeout))
+                {
+                    return s;
+                }
+                else
+                {
+                    throw new SocketException((int)SocketError.TimedOut);
+                }
+            }
         }
 
         public static int GetLocalPort(this Socket socket)
