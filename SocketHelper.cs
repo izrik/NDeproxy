@@ -49,6 +49,11 @@ namespace NDeproxy
         {
             return ((IPEndPoint)socket.RemoteEndPoint).Port;
         }
+
+        public static bool IsClosed(this Socket socket, int timeoutMicroSeconds=1)
+        {
+            return (socket.Poll(timeoutMicroSeconds, SelectMode.SelectRead) && socket.Available < 1);
+        }
     }
 }
 
