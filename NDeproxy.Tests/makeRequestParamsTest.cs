@@ -42,8 +42,11 @@ namespace NDeproxy.Tests
             var mc = this.deproxy.makeRequest(url: string.Format("{0}{1}{2}", urlbase, pathPart, queryPart));
 
             then:
+            Assert.IsNotNull(mc);
+            Assert.IsNotNull(mc.sentRequest);
             Assert.AreEqual(expectedResult, mc.sentRequest.path);
-            Assert.AreEqual(1, mc.handlers.Count);
+            Assert.IsNotNull(mc.handlings);
+            Assert.AreEqual(1, mc.handlings.Count);
             Assert.AreEqual(expectedResult, mc.handlings[0].request.path);
 
         }
