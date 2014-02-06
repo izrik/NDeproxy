@@ -7,7 +7,7 @@ namespace NDeproxy
 {
     public class Deproxy
     {
-        static readonly Logger log = new Logger();
+        static readonly Logger log = new Logger("Deproxy");
         public static readonly string REQUEST_ID_HEADER_NAME = "Deproxy-Request-ID";
         public static readonly string VERSION = getVersion();
         public static readonly string VERSION_STRING = string.Format("deproxy {0}", VERSION);

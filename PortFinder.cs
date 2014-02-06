@@ -7,7 +7,7 @@ namespace NDeproxy
 {
     public class PortFinder
     {
-        static readonly Logger log = new Logger();
+        static readonly Logger log = new Logger("PortFinder");
 
         public static readonly PortFinder Singleton = new PortFinder();
 

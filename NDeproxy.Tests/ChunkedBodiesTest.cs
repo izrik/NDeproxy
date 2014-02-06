@@ -13,7 +13,7 @@ namespace NDeproxy.Tests
     [TestFixture]
     public class ChunkedBodiesTest
     {
-        static readonly Logger log = new Logger();
+        static readonly Logger log = new Logger("ChunkedBodiesTest");
         Deproxy deproxy;
         Socket client;
         Socket server;

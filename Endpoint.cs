@@ -5,7 +5,7 @@ namespace NDeproxy
 {
     public class Endpoint
     {
-        static readonly Logger log = new Logger();
+        static readonly Logger log = new Logger("Endpoint");
         public readonly string name;
         public readonly string hostname;
         public readonly HandlerWithContext defaultHandler;

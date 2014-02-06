@@ -7,7 +7,7 @@ namespace NDeproxy
 {
     public class BodyReader
     {
-        static readonly Logger log = new Logger();
+        static readonly Logger log = new Logger("BodyReader");
 
         public static object readBody(Stream inStream, HeaderCollection headers)
         {

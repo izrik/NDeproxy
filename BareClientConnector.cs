@@ -9,7 +9,7 @@ namespace NDeproxy
 {
     public class BareClientConnector : ClientConnector
     {
-        readonly Logger log = new Logger();
+        readonly Logger log = new Logger("BareClientConnector");
 
         public BareClientConnector()
             : this(null)

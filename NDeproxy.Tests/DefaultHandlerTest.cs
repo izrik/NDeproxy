@@ -6,7 +6,7 @@ namespace NDeproxy.Tests
     [TestFixture]
     public class DefaultHandlerTest
     {
-        static readonly Logger log = new Logger();
+        static readonly Logger log = new Logger("DefaultHandlerTest");
         int _port;
         Deproxy _deproxy;
         Endpoint _endpoint;

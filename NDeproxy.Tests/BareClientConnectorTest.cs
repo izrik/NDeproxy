@@ -7,7 +7,7 @@ namespace NDeproxy.Tests
     [TestFixture]
     class BareClientConnectorTest
     {
-        static readonly Logger log = new Logger();
+        static readonly Logger log = new Logger("BareClientConnectorTest");
         string requestString = ("GET / HTTP/1.1\r\n" +
                                "Content-Length: 0\r\n" +
                                "\r\n");

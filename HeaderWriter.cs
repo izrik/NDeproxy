@@ -6,7 +6,7 @@ namespace NDeproxy
 {
     public class HeaderWriter
     {
-        static readonly Logger log = new Logger();
+        static readonly Logger log = new Logger("HeaderWriter");
 
         public static void writeHeaders(Stream outStream, HeaderCollection headers)
         {

@@ -7,7 +7,7 @@ namespace NDeproxy
 {
     public class BodyWriter
     {
-        static readonly Logger log = new Logger();
+        static readonly Logger log = new Logger("BodyWriter");
 
         public static void writeBody(object body, Stream outStream, bool chunked = false)
         {

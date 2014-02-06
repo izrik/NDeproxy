@@ -9,8 +9,7 @@ namespace NDeproxy
 {
     public class SocketServerConnector : ServerConnector
     {
-        static readonly Logger log = new Logger();
-
+        static readonly Logger log = new Logger("SocketServerConnector");
         ListenerThread serverThread;
         Socket serverSocket;
 

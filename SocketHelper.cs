@@ -1,11 +1,14 @@
 using System;
 using System.Net.Sockets;
 using System.Net;
+using System.Threading;
 
 namespace NDeproxy
 {
     public static class SocketHelper
     {
+        static readonly Logger log = new Logger("SocketHelper");
+
         public static Socket Server(int port, int listenQueue=5)
         {
             var s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);

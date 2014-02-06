@@ -6,7 +6,7 @@ namespace NDeproxy
 {
     public class HeaderReader
     {
-        static readonly Logger log = new Logger();
+        static readonly Logger log = new Logger("HeaderReader");
 
         public static HeaderCollection readHeaders(Stream inStream)
         {
