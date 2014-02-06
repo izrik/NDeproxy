@@ -23,7 +23,7 @@ namespace NDeproxy
 
         Socket socket;
 
-        public Response sendRequest(Request request, bool https, string host, int? port, RequestParams rparams)
+        public virtual Response sendRequest(Request request, bool https, string host, int? port, RequestParams rparams)
         {
             //"""Send the given request to the host and return the Response."""
             log.debug("sending request: https={0}, host={1}, port={2}", https, host, port);

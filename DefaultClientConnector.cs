@@ -16,7 +16,7 @@ namespace NDeproxy
         {
         }
 
-        Response sendRequest(Request request, bool https, string host, int port, RequestParams rparams)
+        public override Response sendRequest(Request request, bool https, string host, int? port, RequestParams rparams)
         {
 
             if (rparams.sendDefaultRequestHeaders)
