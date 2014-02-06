@@ -524,7 +524,7 @@ namespace NDeproxy.Tests
             HeaderCollection headers = new HeaderCollection("Transfer-Encoding: chunked");
 
 
-            byte[] bytesRead = (byte[])BodyReader.readBody(inStream, headers);
+            byte[] bytesRead = (byte[])BodyReader.readBody(inStream, headers, tryConvertToString:false);
 
 
             Assert.AreEqual(Encoding.ASCII.GetBytes(body), bytesRead);

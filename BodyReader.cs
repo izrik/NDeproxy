@@ -9,7 +9,7 @@ namespace NDeproxy
     {
         static readonly Logger log = new Logger("BodyReader");
 
-        public static object readBody(Stream inStream, HeaderCollection headers)
+        public static object readBody(Stream inStream, HeaderCollection headers, bool tryConvertToString=true)
         {
 
             if (headers == null)
@@ -106,60 +106,63 @@ namespace NDeproxy
                 return null;
             }
 
-            // TODO: switch this to true, and always try to read chardata unless
-            // it"s a known binary content type
-            bool tryCharData = false;
-
-            if (!headers.contains("Content-type"))
+            if (tryConvertToString)
             {
-                tryCharData = true;
-            }
-            else
-            {
-                string contentType = headers["Content-Type"];
+                // TODO: switch this to true, and always try to read chardata unless
+                // it"s a known binary content type
+                bool tryCharData = false;
 
-                if (contentType != null)
+                if (!headers.contains("Content-type"))
                 {
-                    contentType = contentType.ToLower();
-                    // use startsWith in order to ignore any charset or other
-                    // parameters on the header value
-                    if (contentType.StartsWith("text/") ||
-                    contentType.StartsWith("application/atom+xml") ||
-                    contentType.StartsWith("application/ecmascript") ||
-                    contentType.StartsWith("application/json") ||
-                    contentType.StartsWith("application/javascript") ||
-                    contentType.StartsWith("application/rdf+xml") ||
-                    contentType.StartsWith("application/rss+xml") ||
-                    contentType.StartsWith("application/soap+xml") ||
-                    contentType.StartsWith("application/xhtml+xml") ||
-                    contentType.StartsWith("application/xml") ||
-                    contentType.StartsWith("application/xml-dtd") ||
-                    contentType.StartsWith("application/xop+xml") ||
-                    contentType.StartsWith("image/svg+xml") ||
-                    contentType.StartsWith("message/http") ||
-                    contentType.StartsWith("message/imdn+xml"))
-                    {
+                    tryCharData = true;
+                }
+                else
+                {
+                    string contentType = headers["Content-Type"];
 
-                        tryCharData = true;
+                    if (contentType != null)
+                    {
+                        contentType = contentType.ToLower();
+                        // use startsWith in order to ignore any charset or other
+                        // parameters on the header value
+                        if (contentType.StartsWith("text/") ||
+                        contentType.StartsWith("application/atom+xml") ||
+                        contentType.StartsWith("application/ecmascript") ||
+                        contentType.StartsWith("application/json") ||
+                        contentType.StartsWith("application/javascript") ||
+                        contentType.StartsWith("application/rdf+xml") ||
+                        contentType.StartsWith("application/rss+xml") ||
+                        contentType.StartsWith("application/soap+xml") ||
+                        contentType.StartsWith("application/xhtml+xml") ||
+                        contentType.StartsWith("application/xml") ||
+                        contentType.StartsWith("application/xml-dtd") ||
+                        contentType.StartsWith("application/xop+xml") ||
+                        contentType.StartsWith("image/svg+xml") ||
+                        contentType.StartsWith("message/http") ||
+                        contentType.StartsWith("message/imdn+xml"))
+                        {
+
+                            tryCharData = true;
+                        }
                     }
                 }
-            }
 
-            if (tryCharData)
-            {
-                string chardata = null;
+                if (tryCharData)
+                {
+                    string chardata = null;
 
-                try
-                {
-                    chardata = Encoding.ASCII.GetString(bindata);
-                }
-                catch (Exception e)
-                {
-                }
+                    try
+                    {
+                        chardata = Encoding.ASCII.GetString(bindata);
+                    }
+                    catch (Exception e)
+                    {
+                    }
 
-                if (chardata != null)
-                {
-                    return chardata;
+                    if (chardata != null)
+                    {
+                        return chardata;
+                    }
                 }
             }
 
