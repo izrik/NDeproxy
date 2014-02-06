@@ -66,6 +66,7 @@
     <Compile Include="QueryParametersTest.cs" />
     <Compile Include="RouteHandlerTest.cs" />
     <Compile Include="SendingHeadersTest.cs" />
+    <Compile Include="SocketServerConnectorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NDeproxy.csproj">
