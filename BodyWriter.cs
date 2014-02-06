@@ -29,7 +29,7 @@ namespace NDeproxy
                     log.debug(sbody);
                     if (sbody.Length > 0)
                     {
-                        var writer = new StreamWriter(outStream, Encoding.ASCII, 0);
+                        var writer = new StreamWriter(outStream, Encoding.ASCII);
                         writer.Write(sbody);
                         writer.Flush();
                     }
