@@ -34,6 +34,7 @@ namespace NDeproxy.Tests
                 mc = this.deproxy.makeRequest(url: string.Format("http://localhost:{0}/", this.port),
                     defaultHandler: handler);
             });
+            t.Start();
 
             // the first request will take a few seconds to finish. during that
             // time, we'll make another request to the same endpoint from another
