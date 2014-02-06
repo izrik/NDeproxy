@@ -12,7 +12,7 @@ namespace NDeproxy
 
             byte[] bytes = new byte[requestLength];
             int n = 0;
-            var stream = new NetworkStream(socket);
+            var stream = new UnbufferedSocketStream(socket);
             while (n < bytes.Length)
             {
                 var count = stream.Read(bytes, n, bytes.Length - n);
@@ -35,7 +35,7 @@ namespace NDeproxy
             long startTimeMillis = System.Environment.TickCount;
 
             List<byte> bytes = new List<byte>();
-            var stream = new NetworkStream(socket);
+            var stream = new UnbufferedSocketStream(socket);
 
             try
             {

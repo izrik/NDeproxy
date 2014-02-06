@@ -16,8 +16,8 @@ namespace NDeproxy.Tests
             var client = pair.Item1;
             var server = pair.Item2;
 
-            var clientStream = new NetworkStream(client);
-            var serverStream = new NetworkStream(server);
+            var clientStream = new UnbufferedSocketStream(client);
+            var serverStream = new UnbufferedSocketStream(server);
 
 
             var writer = new StreamWriter(clientStream);
@@ -55,8 +55,8 @@ namespace NDeproxy.Tests
             Assert.AreEqual(12345, client.GetRemotePort());
             Assert.AreEqual(12345, server.GetLocalPort());
 
-            var clientStream = new NetworkStream(client);
-            var serverStream = new NetworkStream(server);
+            var clientStream = new UnbufferedSocketStream(client);
+            var serverStream = new UnbufferedSocketStream(server);
 
             var writer = new StreamWriter(clientStream);
             var reader = new UnbufferedStreamReader(serverStream);

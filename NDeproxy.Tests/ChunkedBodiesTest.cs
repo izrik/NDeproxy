@@ -196,7 +196,7 @@ namespace NDeproxy.Tests
                 );
             t.Start();
 
-            var stream = new NetworkStream(client);
+            var stream = new UnbufferedSocketStream(client);
             var bytes = Encoding.ASCII.GetBytes(requestString);
             stream.Write(bytes, 0, bytes.Length);
 
@@ -371,7 +371,7 @@ namespace NDeproxy.Tests
 
             // send the data to the endpoint
 
-            var stream = new NetworkStream(client);
+            var stream = new UnbufferedSocketStream(client);
             var bytes = Encoding.ASCII.GetBytes(requestString);
             stream.Write(bytes, 0, bytes.Length);
 

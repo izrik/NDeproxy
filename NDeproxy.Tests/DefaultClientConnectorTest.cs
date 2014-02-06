@@ -49,7 +49,7 @@ namespace NDeproxy.Tests
             }
 
 //        and: "read the request that the connector sent from the server-side socket"
-            var serverStream = new NetworkStream(server);
+            var serverStream = new UnbufferedSocketStream(server);
             string requestLine = LineReader.readLine(serverStream);
             HeaderCollection headers = HeaderCollection.fromStream(serverStream);
             string body = (string)BodyReader.readBody(serverStream, headers);
@@ -127,7 +127,7 @@ namespace NDeproxy.Tests
             }
 
 //        and: "read the request that the connector sent from the server-side socket"
-            var serverStream = new NetworkStream(server);
+            var serverStream = new UnbufferedSocketStream(server);
             string requestLine = LineReader.readLine(serverStream);
             HeaderCollection headers = HeaderCollection.fromStream(serverStream);
 

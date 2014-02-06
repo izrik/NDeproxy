@@ -52,7 +52,7 @@ namespace NDeproxy
                 s = SocketHelper.Client(host, port.Value);
             }
 
-            Stream outStream = new NetworkStream(s);
+            Stream outStream = new UnbufferedSocketStream(s);
             var writer = new StreamWriter(outStream, Encoding.ASCII);
 
             writer.Write(requestLine);
@@ -68,7 +68,7 @@ namespace NDeproxy
 
             BodyWriter.writeBody(request.body, outStream, rparams.usedChunkedTransferEncoding);
 
-            Stream inStream = new NetworkStream(s);
+            Stream inStream = new UnbufferedSocketStream(s);
 
             log.debug("reading response line");
             string responseLine = LineReader.readLine(inStream);
